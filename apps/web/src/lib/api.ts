@@ -9,10 +9,21 @@ interface FetchOptions extends RequestInit {
 }
 
 class ApiClient {
-  private baseUrl: string;
+  private _baseUrl: string;
 
   constructor(baseUrl: string) {
-    this.baseUrl = baseUrl;
+    this._baseUrl = baseUrl;
+  }
+
+  private get baseUrl(): string {
+    if (typeof window !== "undefined") {
+      const host = window.location.hostname;
+      if (host.includes(".onrender.com")) {
+        const apiHost = host.replace("-web", "-api");
+        return `${window.location.protocol}//${apiHost}`;
+      }
+    }
+    return this._baseUrl;
   }
 
   private buildUrl(path: string, params?: Record<string, string>): string {
