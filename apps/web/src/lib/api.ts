@@ -70,33 +70,38 @@ class ApiClient {
       delete headers["Content-Type"];
     }
 
-    const response = await fetch(url, {
-      ...fetchOptions,
-      headers,
-    });
+    try {
+      const response = await fetch(url, {
+        ...fetchOptions,
+        headers,
+      });
 
-    if (!response.ok) {
-      const error = await response.json().catch(() => ({}));
-      if (response.status === 401) {
-        if (typeof window !== "undefined") {
-          localStorage.removeItem("access_token");
-          localStorage.removeItem("refresh_token");
-          window.location.href = "/admin/login";
+      if (!response.ok) {
+        const error = await response.json().catch(() => ({}));
+        if (response.status === 401) {
+          if (typeof window !== "undefined") {
+            localStorage.removeItem("access_token");
+            localStorage.removeItem("refresh_token");
+            window.location.href = "/admin/login";
+          }
         }
+        throw new ApiError(
+          response.status,
+          error.detail || response.statusText,
+          error
+        );
       }
-      throw new ApiError(
-        response.status,
-        error.detail || response.statusText,
-        error
-      );
-    }
 
-    // Handle 204 No Content
-    if (response.status === 204) {
-      return undefined as T;
-    }
+      // Handle 204 No Content
+      if (response.status === 204) {
+        return undefined as T;
+      }
 
-    return response.json();
+      return response.json();
+    } catch (err) {
+      console.error(`[API CLIENT ERROR] Failed to fetch URL: ${url}`, err);
+      throw err;
+    }
   }
 
   get<T>(path: string, options?: FetchOptions): Promise<T> {
