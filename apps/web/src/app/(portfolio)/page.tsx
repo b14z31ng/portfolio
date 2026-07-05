@@ -234,7 +234,7 @@ export default function HomePage() {
       try {
         const data = await api.get<{ items: ProjectCard[]; total: number }>(
           "/api/v1/projects/public",
-          { params: { per_page: "6" } }
+          { params: { per_page: "6", featured_only: "true" } }
         );
         setProjects(data.items);
       } catch (err) {
