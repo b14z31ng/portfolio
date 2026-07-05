@@ -5,6 +5,7 @@ All settings are loaded from environment variables.
 from functools import lru_cache
 from typing import Optional
 
+from pydantic import model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -81,6 +82,25 @@ class Settings(BaseSettings):
     def cors_origins(self) -> list[str]:
         """Parse comma-separated CORS origins."""
         return [origin.strip() for origin in self.ALLOWED_ORIGINS.split(",")]
+
+    @model_validator(mode="after")
+    def adjust_database_urls(self) -> "Settings":
+        """Normalize database URLs for compatibility with async and sync drivers on Render."""
+        # 1. Normalize DATABASE_URL for asyncpg if it has postgres/postgresql prefix
+        url = self.DATABASE_URL
+        if url.startswith("postgres://"):
+            url = url.replace("postgres://", "postgresql+asyncpg://", 1)
+        elif url.startswith("postgresql://") and not url.startswith("postgresql+asyncpg://"):
+            url = url.replace("postgresql://", "postgresql+asyncpg://", 1)
+        self.DATABASE_URL = url
+
+        # 2. Derive DATABASE_SYNC_URL from the DATABASE_URL
+        sync_url = self.DATABASE_URL
+        if sync_url.startswith("postgresql+asyncpg://"):
+            sync_url = sync_url.replace("postgresql+asyncpg://", "postgresql+psycopg2://", 1)
+        self.DATABASE_SYNC_URL = sync_url
+
+        return self
 
 
 @lru_cache()

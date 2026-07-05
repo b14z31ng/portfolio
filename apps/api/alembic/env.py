@@ -9,6 +9,15 @@ from sqlalchemy import engine_from_config, pool
 
 from app.core.config import get_settings
 from app.db.session import Base
+# Import models to ensure they are registered with Base.metadata for migrations
+from app.models.user import User
+from app.models.repository import Repository
+from app.models.project import Project, Technology, ProjectTechnology
+from app.models.blog import BlogPost
+from app.models.experience import Experience
+from app.models.education import Education
+from app.models.research import Research
+from app.models.certificate import Certificate
 
 # ──────────────────────────────────────
 # Alembic Config
