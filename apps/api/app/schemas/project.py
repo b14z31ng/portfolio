@@ -59,6 +59,7 @@ class ProjectCardResponse(BaseModel):
     stars: int = 0
     language: Optional[str] = None
     is_featured: bool = False
+    is_published: bool = False
     technologies: list[TechnologyResponse] = []
     model_config = {"from_attributes": True}
 
