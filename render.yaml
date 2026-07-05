@@ -73,6 +73,7 @@ services:
     name: portfolio-redis
     plan: starter
     region: oregon
+    ipAllowList: []
 
 databases:
   # ──────────────────────────────────────
