@@ -8,7 +8,7 @@ services:
     dockerfilePath: infrastructure/docker/Dockerfile.api
     dockerContext: .
     plan: free
-    region: oregon
+    region: singapore
     healthCheckPath: /api/v1/health
     envVars:
       - key: DATABASE_URL
@@ -52,7 +52,7 @@ services:
     dockerfilePath: infrastructure/docker/Dockerfile.web
     dockerContext: .
     plan: free
-    region: oregon
+    region: singapore
     healthCheckPath: /
     envVars:
       - key: NEXT_PUBLIC_API_URL
@@ -72,7 +72,7 @@ services:
   - type: keyvalue
     name: portfolio-redis
     plan: free
-    region: oregon
+    region: singapore
     ipAllowList: []
 
 databases:
@@ -81,6 +81,6 @@ databases:
   # ──────────────────────────────────────
   - name: portfolio-db
     plan: free
-    region: oregon
+    region: singapore
     databaseName: portfolio
     user: portfolio
