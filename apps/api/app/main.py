@@ -53,16 +53,40 @@ app = FastAPI(
 # ──────────────────────────────────────
 # CORS
 # ──────────────────────────────────────
-origins = settings.cors_origins
-allow_all = "*" in origins or not origins or (len(origins) == 1 and origins[0] == "")
+from fastapi import Request
+from fastapi.responses import Response
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"] if allow_all else origins,
-    allow_credentials=False if allow_all else True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+@app.middleware("http")
+async def cors_middleware(request: Request, call_next):
+    if request.method == "OPTIONS":
+        response = Response()
+        origin = request.headers.get("origin")
+        if origin:
+            response.headers["Access-Control-Allow-Origin"] = origin
+        else:
+            response.headers["Access-Control-Allow-Origin"] = "*"
+        
+        req_headers = request.headers.get("access-control-request-headers")
+        if req_headers:
+            response.headers["Access-Control-Allow-Headers"] = req_headers
+        else:
+            response.headers["Access-Control-Allow-Headers"] = "*"
+            
+        req_method = request.headers.get("access-control-request-method")
+        if req_method:
+            response.headers["Access-Control-Allow-Methods"] = req_method
+        else:
+            response.headers["Access-Control-Allow-Methods"] = "*"
+            
+        response.headers["Access-Control-Allow-Credentials"] = "true"
+        return response
+
+    response = await call_next(request)
+    origin = request.headers.get("origin")
+    if origin:
+        response.headers["Access-Control-Allow-Origin"] = origin
+        response.headers["Access-Control-Allow-Credentials"] = "true"
+    return response
 
 # ──────────────────────────────────────
 # Routers
