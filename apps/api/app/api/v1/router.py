@@ -15,6 +15,9 @@ from app.api.v1.endpoints import (
     research,
     certificates,
     media,
+    profile,
+    publications,
+    resumes,
 )
 
 router = APIRouter(prefix="/api/v1")
@@ -118,5 +121,29 @@ router.include_router(
     tags=["Media"],
 )
 
+# ──────────────────────────────────────
+# Profile
+# ──────────────────────────────────────
+router.include_router(
+    profile.router,
+    prefix="/profile",
+    tags=["Profile"],
+)
 
+# ──────────────────────────────────────
+# Publications
+# ──────────────────────────────────────
+router.include_router(
+    publications.router,
+    prefix="/publications",
+    tags=["Publications"],
+)
 
+# ──────────────────────────────────────
+# Resumes
+# ──────────────────────────────────────
+router.include_router(
+    resumes.router,
+    prefix="/resumes",
+    tags=["Resumes"],
+)

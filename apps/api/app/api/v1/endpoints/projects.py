@@ -8,7 +8,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.deps import get_current_user
 from app.db.session import get_db
-from app.models.project import Project
+from app.models.project import Project, Technology
 from app.models.user import User
 from app.schemas.project import (
     GenerateResultResponse,
@@ -16,6 +16,7 @@ from app.schemas.project import (
     ProjectListResponse,
     ProjectResponse,
     ProjectUpdateRequest,
+    TechnologyResponse,
 )
 from app.services.project_engine import project_engine
 
@@ -67,12 +68,24 @@ async def list_public_projects(
     )
 
 
+@router.get("/public/technologies", response_model=list[TechnologyResponse])
+async def list_public_technologies(
+    db: AsyncSession = Depends(get_db),
+) -> list[TechnologyResponse]:
+    """List all technologies (public, no auth required)."""
+    print("[DEBUG] list_public_technologies route hit")
+    result = await db.execute(select(Technology).order_by(Technology.name.asc()))
+    technologies = result.scalars().all()
+    return [TechnologyResponse.model_validate(t) for t in technologies]
+
+
 @router.get("/public/{slug}", response_model=ProjectResponse)
 async def get_public_project(
     slug: str,
     db: AsyncSession = Depends(get_db),
 ) -> ProjectResponse:
     """Get a single published project by slug (public)."""
+    print(f"[DEBUG] get_public_project route hit with slug={slug}")
     result = await db.execute(
         select(Project).where(Project.slug == slug, Project.is_published == True)
     )

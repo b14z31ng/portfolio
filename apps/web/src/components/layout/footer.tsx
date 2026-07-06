@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useProfile } from "@/hooks/use-profile";
 import { Separator } from "@/components/ui/separator";
 
 function GithubIcon({ className }: { className?: string }) {
@@ -22,11 +23,18 @@ function LinkedinIcon({ className }: { className?: string }) {
 const footerLinks = [
   { label: "Projects", href: "/projects" },
   { label: "Experience", href: "/experience" },
-  { label: "Blog", href: "/blog" },
+  { label: "Research", href: "/research" },
+  { label: "Publications", href: "/publications" },
+  { label: "Certificates", href: "/certificates" },
+  { label: "Resume", href: "/resume" },
   { label: "Contact", href: "/contact" },
 ];
 
 export function Footer() {
+  const { profile } = useProfile();
+
+  const links = [...footerLinks];
+
   return (
     <footer className="border-t border-border/50 mt-auto">
       <div className="max-w-6xl mx-auto px-6 py-12">
@@ -38,17 +46,17 @@ export function Footer() {
               className="text-lg font-bold tracking-tight hover:text-primary transition-colors"
             >
               <span className="text-primary">&lt;</span>
-              Dev
+              {profile?.full_name || "Dev"}
               <span className="text-primary">/&gt;</span>
             </Link>
-            <p className="text-sm text-muted-foreground mt-2 max-w-xs">
-              Building digital experiences that matter.
+            <p className="text-sm text-muted-foreground mt-2 max-w-xs leading-relaxed">
+              {profile?.headline || "Building digital experiences that matter."}
             </p>
           </div>
 
           {/* Links */}
-          <nav className="flex items-center gap-6">
-            {footerLinks.map((link) => (
+          <nav className="flex flex-wrap items-center justify-center gap-6">
+            {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -61,31 +69,35 @@ export function Footer() {
 
           {/* Social */}
           <div className="flex items-center gap-3">
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2.5 rounded-lg hover:bg-accent/50 transition-colors"
-              aria-label="GitHub"
-            >
-              <GithubIcon className="w-4 h-4" />
-            </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2.5 rounded-lg hover:bg-accent/50 transition-colors"
-              aria-label="LinkedIn"
-            >
-              <LinkedinIcon className="w-4 h-4" />
-            </a>
+            {profile?.github_url && (
+              <a
+                href={profile.github_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-lg hover:bg-accent/50 transition-colors"
+                aria-label="GitHub"
+              >
+                <GithubIcon className="w-4 h-4" />
+              </a>
+            )}
+            {profile?.linkedin_url && (
+              <a
+                href={profile.linkedin_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-lg hover:bg-accent/50 transition-colors"
+                aria-label="LinkedIn"
+              >
+                <LinkedinIcon className="w-4 h-4" />
+              </a>
+            )}
           </div>
         </div>
 
         <Separator className="my-8 opacity-50" />
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} Developer Portfolio. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} {profile?.full_name || "Developer Portfolio"}. All rights reserved.</p>
           <p>
             Built with Next.js, FastAPI &amp; ❤️
           </p>

@@ -18,6 +18,8 @@ from app.models.experience import Experience
 from app.models.education import Education
 from app.models.research import Research
 from app.models.certificate import Certificate
+from app.models.profile import Profile, Resume
+from app.models.publication import Publication
 
 # ──────────────────────────────────────
 # Alembic Config

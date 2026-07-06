@@ -12,7 +12,7 @@ interface SimpleBlogPost {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const routes = ["", "/projects", "/experience", "/blog"].map((route) => ({
+  const routes = ["", "/projects", "/experience", "/blog", "/resume"].map((route) => ({
     url: `${SITE_URL}${route}`,
     lastModified: new Date(),
     changeFrequency: "daily" as const,

@@ -1,407 +1,342 @@
-# MASTER_PROMPT.md
+# PORTFOLIO REFINEMENT TASK
 
-# Developer Portfolio CMS
-### Production-Grade Personal Developer Portfolio
+IMPORTANT
 
-Version 1.0
+This project is already fully implemented and running correctly.
 
----
+This is NOT a request to regenerate the project.
 
-# YOUR ROLE
+This is NOT a request to redesign everything.
 
-You are an elite software engineer and product designer responsible for building a world-class personal developer portfolio.
+This is NOT a request to change the project architecture.
 
-This project represents **one developer**.
+Your responsibility is to improve and extend the existing production-ready application while preserving its architecture, coding style, UI consistency and existing functionality.
 
-It is **not** a portfolio builder.
+Always inspect existing components before modifying them.
 
-It is **not** a multi-user SaaS.
+Reuse components whenever possible.
 
-It is a premium portfolio with a private CMS that allows the owner to manage projects, synchronize GitHub repositories, and publish technical content.
+Never duplicate logic.
 
-The final result should feel closer to a premium software product than a traditional portfolio website.
+Never replace working code unnecessarily.
 
----
+Maintain full compatibility with
 
-# PROJECT GOAL
+• Next.js
+• FastAPI
+• PostgreSQL
+• Docker
+• Render
+• Existing Database
+• Existing APIs
+• Existing Authentication
+• Existing GitHub Sync
 
-Create a portfolio that immediately communicates:
+The application must remain production-ready after every change.
 
-- Professionalism
-- Engineering excellence
-- Clean architecture
-- Attention to detail
-- Strong UI/UX
-- Modern frontend skills
-- Backend engineering capability
+------------------------------------------------------------
+PRIMARY OBJECTIVE
+------------------------------------------------------------
 
-The portfolio itself should become one of the strongest projects showcased.
+Transform the portfolio from a generic developer template into a premium personal developer portfolio representing ME.
 
----
+The portfolio should immediately communicate
 
-# TARGET AUDIENCE
+Professionalism
 
-Primary
+Backend Engineering
 
-- Recruiters
-- Hiring Managers
-- Engineering Managers
-- Startup Founders
-- Technical Leads
-- Clients
+Artificial Intelligence
 
-Secondary
+Modern Software Development
 
-- Developers
-- Researchers
-- Students
-- Open Source Contributors
+Clean Architecture
 
-Design every page for recruiters first.
+Problem Solving
 
----
+Scalable Systems
 
-# PRODUCT OVERVIEW
+Every remaining placeholder should be removed.
 
-The application consists of two parts.
+Every hardcoded profile value should become editable through the Admin Dashboard.
 
-## Public Portfolio
+The portfolio should feel handcrafted rather than template generated.
 
-Anyone can visit.
+------------------------------------------------------------
+CURRENT ISSUES TO FIX
+------------------------------------------------------------
 
-Visitors can
+Current Hero
 
-- View projects
-- Read blog posts
-- Explore research
-- View experience
-- Download resume
-- Contact the owner
+"Building digital experiences that matter."
 
-No authentication required.
+"Full-stack software engineer specializing in scalable web applications..."
 
----
+This is generic.
 
-## Private CMS
+Replace it.
 
-Only the owner has access.
+------------------------------------------------------------
+PROFILE INFORMATION
+------------------------------------------------------------
 
-The dashboard manages
+Use these values as the initial profile.
 
-- GitHub repositories
-- Projects
-- Blog
-- Research
-- Experience
-- Education
-- Certificates
-- Media
-- Theme
-- Portfolio settings
+Name
 
----
+Reshad Romim
 
-# CORE FEATURES
+GitHub
 
-## Public Website
+https://github.com/b14z31ng
 
-- Home
-- About
-- Projects
-- Project Details
-- Experience
-- Education
-- Research
-- Blog
-- Certificates
-- Resume
-- Contact
+LinkedIn
 
----
+https://www.linkedin.com/in/reshadromimkhan/
 
-## Private Dashboard
+These values should be inserted into the database as default profile values.
 
-- Authentication
-- GitHub Integration
-- Repository Sync
-- Project Manager
-- Blog CMS
-- Research CMS
-- Media Library
-- Analytics
-- Theme Settings
-- Portfolio Settings
+DO NOT hardcode them inside React components.
 
----
+The frontend must always fetch profile information dynamically.
 
-# USER FLOWS
+------------------------------------------------------------
+HERO SECTION
+------------------------------------------------------------
 
-Portfolio Owner
+Completely rewrite the Hero.
 
-Admin Login
+Do not use generic marketing phrases.
 
-↓
+Avoid
+
+"Building digital experiences."
+
+"Creating amazing experiences."
+
+"Innovative developer."
+
+"Passionate engineer."
+
+Instead write something that reflects
+
+Backend Engineering
+
+AI
+
+Machine Learning
+
+Modern Web Development
+
+FastAPI
+
+Next.js
+
+Python
+
+System Design
+
+Software Architecture
+
+Production Software
+
+The Hero must contain
+
+Greeting
+
+Large Name
+
+Professional Title
+
+Professional Summary
+
+Primary CTA
+
+Secondary CTA
+
+GitHub
+
+LinkedIn
+
+Resume
+
+Scroll Indicator
+
+Profile Image
+
+Animated Background
+
+The writing should feel modern, confident and authentic.
+
+------------------------------------------------------------
+ABOUT SECTION
+------------------------------------------------------------
+
+Rewrite the About section.
+
+Describe me as
+
+Computer Science student
+
+Backend Engineer
+
+AI Developer
+
+Full Stack Developer
+
+Focus on
+
+building production-ready software
+
+backend systems
+
+machine learning
+
+problem solving
+
+clean architecture
+
+continuous learning
+
+Do not exaggerate.
+
+Do not invent experience.
+
+Keep it professional.
+
+------------------------------------------------------------
+PROFILE MANAGEMENT
+------------------------------------------------------------
+
+Currently profile information is incomplete.
+
+Create a dedicated
 
 Dashboard
 
 ↓
 
-Connect GitHub
+Profile
 
-↓
+The Profile page should manage
 
-Synchronize
+Full Name
 
-↓
+Professional Headline
 
-Select Repositories
+Hero Description
 
-↓
+About Description
 
-Generate Projects
+Profile Image
 
-↓
+Email
 
-Edit
+Phone
 
-↓
+Location
 
-Publish
-
-Visitors
-
-Landing Page
-
-↓
-
-Featured Projects
-
-↓
-
-About
-
-↓
-
-Project Details
-
-↓
-
-Resume
-
-↓
-
-Contact
-
----
-
-# DESIGN PHILOSOPHY
-
-The portfolio should feel inspired by
-
-Apple
-
-Vercel
-
-Linear
+Website
 
 GitHub
 
-Framer
+LinkedIn
 
-Raycast
+Availability
 
-Characteristics
+Resume
 
-- Clean
-- Minimal
-- Elegant
-- Interactive
-- Premium
-- Responsive
-- Accessible
+SEO Title
 
-Avoid unnecessary visual noise.
+SEO Description
 
-Motion should improve usability rather than distract.
+OpenGraph Image
 
-Whitespace is part of the design.
+Every field must be editable.
 
----
+Nothing should remain hardcoded.
 
-# THEME SYSTEM
+------------------------------------------------------------
+SOCIAL LINKS
+------------------------------------------------------------
 
-Support three themes.
+The GitHub button currently links to
 
-## Light
+https://github.com
 
-Professional
+This is incorrect.
 
-Clean
+Replace it with
 
-Bright
+https://github.com/b14z31ng
 
-Soft shadows
+The LinkedIn button currently links to
 
----
+https://linkedin.com
 
-## Dark
+Replace it with
 
-Professional
+https://www.linkedin.com/in/reshadromimkhan/
 
-Muted
+These values must come from the Profile table.
 
-High contrast
+If any link is empty
 
-Glass surfaces
+Hide the button.
 
----
+Never show placeholder links.
 
-## Abyss (Default)
+------------------------------------------------------------
+HERO BUTTONS
+------------------------------------------------------------
 
-Deep blue-black background
+Primary Button
 
-Glass cards
+View Projects
 
-Electric blue highlights
+Secondary Button
 
-Soft cyan glow
+Download Resume
 
-Gradient accents
+Social Buttons
 
-Ambient lighting
+GitHub
 
-Abyss should become the visual identity of the portfolio.
+LinkedIn
 
----
+Resume button should automatically use the uploaded resume.
 
-# TECHNOLOGY STACK
+Never hardcode URLs.
 
-Frontend
+------------------------------------------------------------
+PROFILE IMAGE
+------------------------------------------------------------
 
-- Next.js (App Router)
-- TypeScript
-- Tailwind CSS
-- shadcn/ui
-- Framer Motion
-- TanStack Query
-- React Hook Form
-- Zod
-- Lucide Icons
-- next-themes
+The profile image should be managed by CMS.
 
-Backend
+Allow
 
-- FastAPI
-- SQLAlchemy
-- Alembic
-- PostgreSQL
-- Redis
-- JWT Authentication
+Upload
 
-Infrastructure
+Replace
 
-- Docker
-- Render
-- GitHub Actions
-- Cloudinary
+Delete
 
----
+Preview
 
-# PROJECT STRUCTURE
+The Hero should always display the uploaded profile image.
 
-Use a monorepo.
+Fallback
 
-apps/
-    web/
-    api/
+Use placeholder avatar.
 
-packages/
-    ui/
-    utils/
-    config/
-    types/
+------------------------------------------------------------
+HOMEPAGE ORDER
+------------------------------------------------------------
 
-docs/
+Improve information hierarchy.
 
-infrastructure/
-
----
-
-# CODING PRINCIPLES
-
-Write production-quality code.
-
-Requirements
-
-- Strict TypeScript
-- No any
-- Reusable components
-- Reusable hooks
-- Clean Architecture
-- SOLID Principles
-- Typed APIs
-- Modular folders
-
-Never duplicate business logic.
-
----
-
-# GITHUB INTEGRATION
-
-GitHub is used only by the owner.
-
-Visitors never authenticate with GitHub.
-
-Workflow
-
-Connect GitHub
-
-↓
-
-Fetch Repositories
-
-↓
-
-Choose Visible Projects
-
-↓
-
-Synchronize
-
-↓
-
-Generate Portfolio Pages
-
----
-
-# PROJECT GENERATION
-
-Each repository should become a professional project page.
-
-Automatically collect
-
-- Repository metadata
-- README
-- Technologies
-- Screenshots
-- Languages
-- Stars
-- Last update
-
-Generate
-
-- Summary
-- Tech Stack
-- Architecture Overview
-- Skills Demonstrated
-
-Owner can edit every generated field.
-
----
-
-# HOMEPAGE
-
-Order
+Homepage should become
 
 Hero
 
@@ -411,11 +346,11 @@ Featured Projects
 
 ↓
 
-About
+About Me
 
 ↓
 
-Skills
+Technology Stack
 
 ↓
 
@@ -431,6 +366,10 @@ Research
 
 ↓
 
+Publications
+
+↓
+
 Certificates
 
 ↓
@@ -441,290 +380,1207 @@ Contact
 
 Footer
 
----
+This order is optimized for recruiters.
 
-# HERO
+------------------------------------------------------------
+FEATURED PROJECTS
+------------------------------------------------------------
 
-Contains
+Do not display every project equally.
 
-Professional headline
+Allow admin to choose
 
-Short introduction
+Featured Projects.
 
-Profile image placeholder
+Homepage should display only featured projects.
 
-GitHub
+The remaining projects stay inside the Projects page.
 
-LinkedIn
+Every featured project should have
 
-Resume
+Large Card
 
-Call-to-action buttons
+Image
 
-Animated background
-
-Scroll indicator
-
----
-
-# PROJECTS
-
-The project section is the centerpiece.
-
-Display featured projects first.
-
-Support
-
-- Search
-- Filters
-- Categories
-- Technology tags
-
-Every project card includes
-
-- Banner
-- Title
-- Summary
-- Technologies
-- GitHub
-- Live Demo
-- Details
-
----
-
-# PROJECT PAGE
-
-Each project should contain
-
-Hero Banner
-
-↓
-
-Overview
-
-↓
-
-Screenshots
-
-↓
-
-Architecture
-
-↓
-
-Features
-
-↓
-
-Technology Stack
-
-↓
-
-Challenges
-
-↓
-
-Solutions
-
-↓
-
-Lessons Learned
-
-↓
-
-README
-
-↓
-
-GitHub
-
-↓
-
-Live Demo
-
-The page should feel like a software case study.
-
----
-
-# BLOG
-
-Markdown support
-
-Syntax highlighting
-
-Reading time
-
-Categories
-
-Search
-
-Drafts
-
-SEO
-
----
-
-# EXPERIENCE
-
-Interactive timeline
-
-Company
-
-Role
-
-Description
+Summary
 
 Technologies
 
-Achievements
+GitHub
 
----
+Live Demo
 
-# EDUCATION
+View Details
 
-Timeline
+------------------------------------------------------------
+GENERAL REQUIREMENTS
+------------------------------------------------------------
 
-Institution
+Maintain
 
-Degree
+Responsive Design
 
-Duration
+Accessibility
 
-Achievements
+SEO
 
-Projects
+Animations
 
----
+Glass Design
 
-# CERTIFICATES
+Dark Theme
 
-Grid layout
+Light Theme
 
-Preview
+Abyss Theme
 
-Credential link
+Do not redesign existing components.
 
-Issue date
+Improve them.
 
-Issuer
+Follow existing architecture.
 
----
+Preserve existing APIs.
 
-# CONTACT
+Preserve existing routing.
 
-Simple professional form
+Preserve existing database relationships.
 
-Name
+Never break working functionality.
 
-Email
+------------------------------------------------------------
+RESUME MANAGEMENT
+------------------------------------------------------------
 
-Subject
+There is currently NO way to upload or manage my resume.
 
-Message
+This is a major missing feature.
 
-Validation
+Implement complete Resume Management.
 
-Loading
+The Resume must become a first-class entity inside the CMS.
 
-Success state
+Create
 
----
+Dashboard
 
-# COMPONENTS
+↓
 
-Create reusable components.
+Profile
 
-Examples
+↓
+
+Resume
+
+The Resume page should support
+
+• Upload Resume (PDF only)
+
+• Replace Resume
+
+• Delete Resume
+
+• Preview Resume
+
+• Download Resume
+
+• Display upload date
+
+• Display file size
+
+• Display current active resume
+
+Only one active resume should exist.
+
+Uploading a new resume automatically replaces the previous one.
+
+Store the file using the existing storage implementation.
+
+Use Cloudinary if already configured.
+
+Otherwise use the existing media storage system.
+
+Never hardcode resume URLs.
+
+------------------------------------------------------------
+DOWNLOAD RESUME
+------------------------------------------------------------
+
+Homepage Hero
 
 Navbar
 
 Footer
 
+Project Pages
+
+About Page
+
+Every Download Resume button must automatically use the uploaded resume.
+
+Never use static files.
+
+Never use hardcoded links.
+
+If no resume exists
+
+Hide the Download Resume button
+
+or
+
+Show a disabled button with
+
+"Resume Coming Soon"
+
+------------------------------------------------------------
+PROFILE COMPLETENESS
+------------------------------------------------------------
+
+Inside Dashboard
+
+Create
+
+Profile Completion
+
+Example
+
+✓ Profile Photo
+
+✓ Hero Title
+
+✓ About
+
+✓ Resume Uploaded
+
+✓ GitHub
+
+✓ LinkedIn
+
+✓ Contact Information
+
+✓ Featured Projects
+
+✓ Certificates
+
+✓ Publications
+
+Display completion percentage.
+
+Example
+
+92% Complete
+
+This helps ensure no placeholder content remains.
+
+------------------------------------------------------------
+PUBLICATIONS MODULE
+------------------------------------------------------------
+
+The portfolio currently has no Publications section.
+
+Implement an entirely new module.
+
+This should behave similarly to Research but represent published work.
+
+Navigation
+
+Home
+
+Projects
+
+Experience
+
+Research
+
+Publications
+
+Certificates
+
+Contact
+
+Resume
+
+------------------------------------------------------------
+HOMEPAGE
+------------------------------------------------------------
+
+Add
+
+Publications
+
+between
+
+Research
+
+and
+
+Certificates
+
+------------------------------------------------------------
+PUBLICATIONS PAGE
+------------------------------------------------------------
+
+Create
+
+/publications
+
+Each publication should support
+
+Title
+
+Subtitle
+
+Authors
+
+Conference
+
+Journal
+
+Publisher
+
+Year
+
+Publication Date
+
+Status
+
+DOI
+
+Citation
+
+BibTeX
+
+Abstract
+
+Keywords
+
+PDF
+
+Presentation
+
+GitHub Repository
+
+Images
+
+Featured
+
+Categories
+
+Tags
+
+Visibility
+
+Published
+
+Accepted
+
+Under Review
+
+Draft
+
+The page should follow the same premium design language used throughout the portfolio.
+
+------------------------------------------------------------
+PUBLICATION CARD
+------------------------------------------------------------
+
+Each publication card should display
+
+Publication Cover
+
+Title
+
+Authors
+
+Conference
+
+Year
+
+Status Badge
+
+Short Summary
+
+View Details
+
+PDF
+
+DOI
+
+GitHub
+
+Publication cards should use
+
+Glass Cards
+
+Hover Animations
+
+Gradient Borders
+
+Consistent Shadows
+
+Responsive Grid
+
+------------------------------------------------------------
+PUBLICATION DETAILS PAGE
+------------------------------------------------------------
+
+Each publication should have its own page.
+
+Include
+
 Hero
 
-GlassCard
+Abstract
 
-ProjectCard
+Authors
 
-Timeline
+Publication Information
 
-TechnologyBadge
+Conference
 
-Search
+Journal
 
-ThemeToggle
+Citation
 
-MarkdownViewer
+BibTeX
+
+Keywords
 
 Gallery
 
-Skeleton
+Downloads
 
-EmptyState
+GitHub
 
-Toast
+Related Projects
 
-Modal
+Related Research
 
-Drawer
+------------------------------------------------------------
+PUBLICATION ADMIN
+------------------------------------------------------------
 
-Every component must support
+Create
 
-Loading
+Dashboard
 
-Hover
+↓
 
-Focus
+Publications
 
-Responsive behavior
+Implement complete CRUD
 
-Accessibility
+Create
 
----
+Update
 
-# ANIMATIONS
+Delete
 
-Use Framer Motion.
+Publish
 
-Animations
+Unpublish
 
-Fade
+Feature
 
-Slide
+Archive
 
-Scale
+Preview
 
-Hover Lift
+Duplicate
 
-Spotlight
+Search
 
-Page Transition
+Filtering
 
-Counter
+Sorting
 
-Parallax
+Status Management
 
-Support reduced motion.
+Everything should follow existing CMS architecture.
 
----
+------------------------------------------------------------
+DATABASE
+------------------------------------------------------------
 
-# RESPONSIVE DESIGN
+Create
 
-Support
+Publication
+
+Model
+
+Migration
+
+Repository
+
+Service
+
+Schemas
+
+API
+
+Relationships
+
+Use existing coding standards.
+
+------------------------------------------------------------
+CERTIFICATES
+------------------------------------------------------------
+
+Certificates currently exist.
+
+Improve them.
+
+Each certificate should support
+
+Title
+
+Issuer
+
+Description
+
+Issue Date
+
+Expiration Date
+
+Credential URL
+
+Certificate Image
+
+Skills
+
+Category
+
+Featured
+
+Visibility
+
+Download
+
+Preview
+
+Credential ID
+
+Homepage should display Featured Certificates only.
+
+Certificates page should display all.
+
+------------------------------------------------------------
+CERTIFICATE PAGE
+------------------------------------------------------------
+
+Improve layout.
+
+Each certificate should include
+
+Large Preview
+
+Issuer Information
+
+Description
+
+Skills
+
+Issue Date
+
+Credential Verification
+
+Download
+
+External Credential Link
+
+Related Technologies
+
+------------------------------------------------------------
+NAVIGATION
+------------------------------------------------------------
+
+Update navigation.
 
 Desktop
 
-Laptop
+Home
 
-Tablet
+Projects
+
+Experience
+
+Research
+
+Publications
+
+Certificates
+
+Contact
+
+Resume
+
+Dashboard (Authenticated Only)
+
+Mobile Navigation
+
+Must contain identical items.
+
+------------------------------------------------------------
+FOOTER
+------------------------------------------------------------
+
+Improve Footer.
+
+Include
+
+Profile
+
+GitHub
+
+LinkedIn
+
+Email
+
+Quick Links
+
+Resume
+
+Copyright
+
+Current Year
+
+Social Icons
+
+Footer should dynamically load profile information.
+
+------------------------------------------------------------
+CONTACT
+------------------------------------------------------------
+
+Improve Contact section.
+
+Include
+
+Professional Email
+
+LinkedIn
+
+GitHub
+
+Contact Form
+
+Location
+
+Availability Status
+
+Response Time
+
+Everything should come from Profile Settings.
+
+------------------------------------------------------------
+MEDIA LIBRARY
+------------------------------------------------------------
+
+Expand Media Library.
+
+Support
+
+Images
+
+Certificates
+
+Publication PDFs
+
+Resume
+
+Profile Photo
+
+Project Screenshots
+
+Research Files
+
+Preview
+
+Replace
+
+Delete
+
+Search
+
+Filtering
+
+Everything should reuse the existing Media implementation.
+
+------------------------------------------------------------
+GENERAL RULES
+------------------------------------------------------------
+
+Never hardcode
+
+Resume
+
+GitHub
+
+LinkedIn
+
+Profile
+
+Certificates
+
+Publications
+
+Everything should come from CMS.
+
+Maintain
+
+Responsive Design
+
+Accessibility
+
+SEO
+
+Animations
+
+Dark Theme
+
+Light Theme
+
+Abyss Theme
+
+Glass Design
+
+Production Quality
+
+Do not introduce duplicate components.
+
+Reuse existing architecture whenever possible.
+
+Every new page must follow the same design language as the existing portfolio.
+
+------------------------------------------------------------
+ADMIN DASHBOARD IMPROVEMENTS
+------------------------------------------------------------
+
+The current Admin Dashboard is functional but incomplete.
+
+Improve it without changing the existing architecture.
+
+The dashboard should become the single place where every piece of portfolio content is managed.
+
+Updated Dashboard Navigation
+
+Dashboard
+
+Profile
+
+Projects
+
+GitHub
+
+Experience
+
+Education
+
+Research
+
+Publications
+
+Certificates
+
+Blog
+
+Media
+
+Analytics
+
+Theme
+
+Settings
+
+System
+
+Only authenticated administrators should have access.
+
+------------------------------------------------------------
+PROFILE SETTINGS
+------------------------------------------------------------
+
+The Profile page should become the central configuration page for the portfolio.
+
+Support editing
+
+Full Name
+
+Professional Headline
+
+Hero Title
+
+Hero Subtitle
+
+Hero Description
+
+About Description
+
+Location
+
+Email
+
+Phone
+
+GitHub
+
+LinkedIn
+
+Website
+
+Availability Status
+
+Resume
+
+Profile Photo
+
+SEO Title
+
+SEO Description
+
+Open Graph Image
+
+Favicon
+
+Everything displayed publicly must originate from this page.
+
+------------------------------------------------------------
+SETTINGS PAGE
+------------------------------------------------------------
+
+Expand Settings.
+
+General
+
+Portfolio Name
+
+Site URL
+
+Default Theme
+
+Timezone
+
+Language
+
+SEO
+
+Meta Title
+
+Meta Description
+
+Keywords
+
+Canonical URL
+
+Google Verification
+
+Open Graph
+
+Analytics
+
+Google Analytics
+
+Plausible
+
+Microsoft Clarity
+
+GitHub
+
+GitHub Token
+
+Sync Interval
+
+Default Branch
+
+Auto Sync
+
+Theme
+
+Primary Color
+
+Accent Color
+
+Default Theme
+
+Glass Intensity
+
+Animation Speed
+
+Enable Motion
+
+------------------------------------------------------------
+GITHUB SYNCHRONIZATION
+------------------------------------------------------------
+
+Improve the GitHub integration.
+
+Dashboard
+
+↓
+
+GitHub
+
+Show
+
+Connection Status
+
+GitHub Username
+
+Profile Avatar
+
+Repository Count
+
+Last Synchronization
+
+Sync Duration
+
+Rate Limit
+
+Allow
+
+Manual Sync
+
+Auto Sync
+
+Force Sync
+
+Select Repositories
+
+Hide Repository
+
+Feature Repository
+
+Remove Repository
+
+Only selected repositories should appear publicly.
+
+------------------------------------------------------------
+PROJECT MANAGEMENT
+------------------------------------------------------------
+
+Projects should become fully editable.
+
+Every project should support
+
+Featured
+
+Pinned
+
+Draft
+
+Published
+
+Hidden
+
+Archive
+
+Order
+
+Category
+
+Tags
+
+SEO
+
+Gallery
+
+GitHub
+
+Demo
+
+README
+
+Architecture
+
+Challenges
+
+Solutions
+
+Lessons Learned
+
+Do not remove automatic GitHub synchronization.
+
+Manual changes should always override generated content.
+
+------------------------------------------------------------
+SEARCH
+------------------------------------------------------------
+
+Improve global search.
+
+Support
+
+Projects
+
+Research
+
+Publications
+
+Certificates
+
+Blog
+
+Technologies
+
+Search should include
+
+Title
+
+Description
+
+Tags
+
+Technologies
+
+Content
+
+Keyboard shortcut
+
+Ctrl + K
+
+or
+
+Cmd + K
+
+------------------------------------------------------------
+DATABASE
+------------------------------------------------------------
+
+Create any missing database tables required for
+
+Resume
+
+Profile
+
+Publications
+
+Settings
+
+Social Links
+
+Analytics
+
+Generate
+
+SQLAlchemy Models
+
+Alembic Migrations
+
+Pydantic Schemas
+
+CRUD Services
+
+Repositories
+
+API Routes
+
+Relationships
+
+Indexes
+
+Use UUID primary keys if the existing project already follows that pattern.
+
+Maintain consistency with the existing database.
+
+------------------------------------------------------------
+API
+------------------------------------------------------------
+
+Every new feature must expose REST endpoints.
+
+Profile
+
+GET
+
+PATCH
+
+Resume
+
+Upload
+
+Replace
+
+Delete
+
+Download
+
+Publications
+
+CRUD
+
+Certificates
+
+CRUD Improvements
+
+Settings
+
+GET
+
+PATCH
+
+GitHub
+
+Sync
+
+Repositories
+
+Status
+
+Analytics
+
+GET
+
+Maintain API versioning.
+
+Maintain existing response format.
+
+Never introduce breaking API changes.
+
+------------------------------------------------------------
+MEDIA STORAGE
+------------------------------------------------------------
+
+All uploads should reuse the existing media storage layer.
+
+Supported uploads
+
+Profile Photo
+
+Resume
+
+Publication PDFs
+
+Certificate Images
+
+Project Images
+
+Research Files
+
+Validate
+
+Type
+
+Size
+
+Extension
+
+Prevent duplicate uploads.
+
+------------------------------------------------------------
+SEO
+------------------------------------------------------------
+
+Improve SEO management.
+
+Every page should support
+
+Title
+
+Description
+
+Keywords
+
+Canonical
+
+OpenGraph
+
+Twitter Cards
+
+Structured Data
+
+Automatically generate Sitemap.
+
+Automatically generate Robots.txt.
+
+------------------------------------------------------------
+ANALYTICS
+------------------------------------------------------------
+
+Dashboard should display
+
+Visitors
+
+Page Views
+
+Top Projects
+
+Downloads
+
+Most Viewed Project
+
+Most Downloaded Resume
+
+Traffic Sources
+
+Countries
+
+Devices
+
+Browsers
+
+Analytics should degrade gracefully if no provider is configured.
+
+------------------------------------------------------------
+ERROR HANDLING
+------------------------------------------------------------
+
+Every feature should include
+
+Loading State
+
+Empty State
+
+Error State
+
+Retry State
+
+Graceful Fallback
+
+Never expose internal exceptions to users.
+
+------------------------------------------------------------
+ACCESSIBILITY
+------------------------------------------------------------
+
+Maintain WCAG AA.
+
+Keyboard Navigation
+
+Visible Focus
+
+Semantic HTML
+
+ARIA Labels
+
+Reduced Motion
+
+High Contrast
+
+Touch Friendly Controls
+
+------------------------------------------------------------
+RESPONSIVE DESIGN
+------------------------------------------------------------
+
+Every new page must support
 
 Mobile
 
+Tablet
+
+Laptop
+
+Desktop
+
 No horizontal scrolling.
 
----
+Maintain existing spacing system.
 
-# PERFORMANCE
+------------------------------------------------------------
+PERFORMANCE
+------------------------------------------------------------
+
+Do not reduce Lighthouse score.
 
 Target
 
@@ -744,89 +1600,338 @@ Fonts
 
 Bundles
 
-Queries
-
 Animations
 
----
+API Requests
 
-# ACCESSIBILITY
+Database Queries
 
-WCAG AA
+------------------------------------------------------------
+SECURITY
+------------------------------------------------------------
 
-Keyboard navigation
+Never expose
 
-ARIA labels
+GitHub Token
 
-Visible focus
+Environment Variables
 
-Semantic HTML
+Secrets
 
-Reduced motion
+Passwords
 
----
+Use existing authentication.
 
-# SEO
+Validate every upload.
 
-Meta titles
+Sanitize every input.
 
-Descriptions
+Protect every admin endpoint.
 
-Open Graph
+------------------------------------------------------------
+RENDER COMPATIBILITY
+------------------------------------------------------------
 
-Twitter Cards
+The application is already prepared for deployment.
 
-Structured Data
+Preserve compatibility with
 
-Sitemap
-
-Robots.txt
-
----
-
-# DEPLOYMENT
-
-Deploy to Render.
-
-Use
+Render
 
 Docker
 
-render.yaml
+PostgreSQL
 
-GitHub Actions
+Redis
 
-Environment variables
+Cloudinary
 
-Health checks
+Environment Variables
 
-Background workers
+Health Checks
 
-No code changes should be required after deployment.
+Do not introduce deployment-breaking changes.
 
----
+------------------------------------------------------------
+TESTING
+------------------------------------------------------------
 
-# CLAUDE IMPLEMENTATION RULES
+Before completing modifications
 
-Build incrementally.
+Verify
 
-For every feature
+Homepage
 
-1. Explain architecture.
-2. Generate folder structure.
-3. Implement backend.
-4. Implement frontend.
-5. Connect both.
-6. Add validation.
-7. Add loading states.
-8. Add accessibility.
-9. Document.
-10. Wait for approval.
+Projects
 
-Never generate the entire application at once.
+GitHub Sync
 
-Prefer maintainability over cleverness.
+Research
 
-Always keep the code production-ready.
+Publications
 
-END OF MASTER_PROMPT.md
+Certificates
+
+Resume
+
+Profile
+
+Admin Dashboard
+
+Authentication
+
+Media Upload
+
+Responsive Layout
+
+Theme Switching
+
+Accessibility
+
+Search
+
+No existing feature should regress.
+
+------------------------------------------------------------
+FINAL QUALITY REQUIREMENTS
+------------------------------------------------------------
+
+This should no longer feel like a portfolio template.
+
+It should feel like a polished software product built by an experienced software engineer.
+
+Recruiters should immediately understand
+
+who I am,
+
+what I build,
+
+and the quality of my engineering.
+
+Every page should reinforce professionalism.
+
+Every interaction should feel intentional.
+
+Every piece of personal information should be editable through the CMS.
+
+There must be no placeholder text, placeholder links, placeholder images, or hardcoded personal information remaining anywhere in the application.
+
+------------------------------------------------------------
+IMPLEMENTATION RULES
+------------------------------------------------------------
+
+Work incrementally.
+
+Before changing any feature
+
+1. Inspect the existing implementation.
+
+2. Reuse existing components.
+
+3. Extend existing functionality instead of replacing it.
+
+4. Preserve architecture.
+
+5. Preserve folder structure.
+
+6. Preserve coding standards.
+
+7. Preserve database consistency.
+
+8. Update backend and frontend together.
+
+9. Generate database migrations where required.
+
+10. Verify existing functionality.
+
+11. Test before moving to the next feature.
+
+Do not rewrite the application.
+
+Do not regenerate the project.
+
+Improve the existing production-ready portfolio while maintaining stability, maintainability, performance, and deployment compatibility.
+
+------------------------------------------------------------
+RECRUITER EXPERIENCE
+------------------------------------------------------------
+
+The portfolio is primarily designed for recruiters, hiring managers, engineering managers, CTOs, and potential clients.
+
+Every page should help visitors quickly understand
+
+• Who I am
+• What I build
+• My strongest technical skills
+• My engineering approach
+• My best projects
+• How to contact me
+
+A recruiter should be able to understand my profile within the first 30–60 seconds.
+
+Prioritize clarity over visual complexity.
+
+------------------------------------------------------------
+CONTENT QUALITY
+------------------------------------------------------------
+
+Review every page.
+
+Remove
+
+• Generic marketing text
+• Placeholder content
+• Lorem Ipsum
+• Dummy statistics
+• Fake testimonials
+• Empty sections
+• Template wording
+
+Replace with meaningful, professional content.
+
+Never fabricate experience, publications, certifications, or achievements.
+
+If content is missing, provide a graceful empty state in the CMS instead of displaying placeholders.
+
+------------------------------------------------------------
+FEATURED WORK
+------------------------------------------------------------
+
+The homepage should prioritize quality over quantity.
+
+Display only 3–6 featured projects.
+
+Each featured project should include
+
+• Banner Image
+• Short Description
+• Tech Stack
+• GitHub
+• Live Demo (if available)
+• View Details
+
+The complete project list remains on the Projects page.
+
+------------------------------------------------------------
+PROJECT CASE STUDIES
+------------------------------------------------------------
+
+Every project page should read like a software engineering case study.
+
+Suggested structure
+
+• Hero
+• Project Overview
+• Problem Statement
+• Solution
+• Key Features
+• Tech Stack
+• System Architecture
+• Screenshots
+• Challenges
+• Solutions
+• Lessons Learned
+• GitHub Repository
+• Live Demo
+• README
+
+Avoid simply embedding the README.
+
+Transform project information into a structured and readable presentation.
+
+------------------------------------------------------------
+ADMIN EXPERIENCE
+------------------------------------------------------------
+
+The CMS should allow me to update my portfolio without modifying source code.
+
+Every personal detail should be editable from the dashboard.
+
+This includes
+
+• Hero
+• About
+• Profile
+• Resume
+• Projects
+• Experience
+• Education
+• Research
+• Publications
+• Certificates
+• Contact Information
+• SEO
+• Social Links
+
+The CMS should be intuitive and consistent.
+
+------------------------------------------------------------
+VISUAL CONSISTENCY
+------------------------------------------------------------
+
+Review the entire application.
+
+Ensure consistent
+
+• Spacing
+• Typography
+• Card layouts
+• Border radius
+• Shadows
+• Glass effects
+• Icon sizes
+• Animation timing
+• Hover effects
+• Button styles
+
+No page should feel visually disconnected from the rest of the application.
+
+------------------------------------------------------------
+FINAL REVIEW
+------------------------------------------------------------
+
+Before considering the task complete, perform a complete review of the application.
+
+Verify
+
+✓ No broken links
+
+✓ No placeholder URLs
+
+✓ GitHub links open my profile
+
+✓ LinkedIn opens my profile
+
+✓ Resume downloads correctly
+
+✓ Publications appear in Homepage and Navbar
+
+✓ Certificates display correctly
+
+✓ Featured projects work
+
+✓ Hero content is personalized
+
+✓ About section is personalized
+
+✓ Profile image loads
+
+✓ Mobile responsiveness
+
+✓ Tablet responsiveness
+
+✓ Desktop responsiveness
+
+✓ Theme switching
+
+✓ Accessibility
+
+✓ SEO metadata
+
+✓ Production build succeeds
+
+✓ Docker build succeeds
+
+✓ Render deployment remains compatible
+
+The final result should feel like a premium, handcrafted developer portfolio built for a professional software engineer—not a modified template.

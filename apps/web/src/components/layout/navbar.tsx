@@ -9,13 +9,8 @@ import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Projects", href: "/projects" },
-  { label: "Experience", href: "/experience" },
-  { label: "Blog", href: "/blog" },
-  { label: "Contact", href: "/contact" },
-];
+import { useProfile } from "@/hooks/use-profile";
+import { useAuth } from "@/hooks/use-auth";
 
 const themeIcons = {
   light: Sun,
@@ -31,6 +26,8 @@ export function Navbar() {
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const { profile } = useProfile();
+  const { isLoggedIn } = useAuth();
 
   useEffect(() => setMounted(true), []);
 
@@ -41,6 +38,7 @@ export function Navbar() {
   }, []);
 
   // Close mobile nav on route change
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => setIsOpen(false), [pathname]);
 
   const cycleTheme = () => {
@@ -55,6 +53,21 @@ export function Navbar() {
 
   // Don't show navbar on admin pages
   if (pathname.startsWith("/admin")) return null;
+
+  const links: { label: string; href: string; external?: boolean }[] = [
+    { label: "Introduction", href: "/" },
+    { label: "Projects", href: "/projects" },
+    { label: "Experience", href: "/experience" },
+    { label: "Research", href: "/research" },
+    { label: "Publications", href: "/publications" },
+    { label: "Certificates", href: "/certificates" },
+    { label: "Resume", href: "/resume" },
+    { label: "Contact", href: "/contact" },
+  ];
+
+  if (isLoggedIn) {
+    links.push({ label: "Dashboard", href: "/admin", external: false });
+  }
 
   return (
     <>
@@ -76,14 +89,27 @@ export function Navbar() {
             className="text-lg font-bold tracking-tight hover:text-primary transition-colors"
           >
             <span className="text-primary">&lt;</span>
-            Dev
+            Reshad
             <span className="text-primary">/&gt;</span>
           </Link>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => {
+            {links.map((link) => {
               const isActive = pathname === link.href;
+              if (link.external) {
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3.5 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                );
+              }
               return (
                 <Link
                   key={link.href}
@@ -173,8 +199,21 @@ export function Navbar() {
               </div>
 
               <nav className="space-y-1">
-                {navLinks.map((link) => {
+                {links.map((link) => {
                   const isActive = pathname === link.href;
+                  if (link.external) {
+                    return (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-3 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent/50 transition-colors"
+                      >
+                        {link.label}
+                      </a>
+                    );
+                  }
                   return (
                     <Link
                       key={link.href}
