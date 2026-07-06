@@ -53,8 +53,35 @@ app = FastAPI(
 # ──────────────────────────────────────
 # CORS
 # ──────────────────────────────────────
-from fastapi import Request
-from fastapi.responses import Response
+from fastapi import Request, HTTPException
+from fastapi.responses import Response, JSONResponse
+import traceback
+
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception):
+    origin = request.headers.get("origin")
+    headers = {}
+    if origin:
+        headers["Access-Control-Allow-Origin"] = origin
+        headers["Access-Control-Allow-Credentials"] = "true"
+    else:
+        headers["Access-Control-Allow-Origin"] = "*"
+
+    if isinstance(exc, HTTPException):
+        return JSONResponse(
+            status_code=exc.status_code,
+            content={"detail": exc.detail},
+            headers=headers
+        )
+    
+    tb = traceback.format_exc()
+    print(f"[GLOBAL EXCEPTION] {tb}")
+    return JSONResponse(
+        status_code=500,
+        content={"detail": str(exc), "traceback": tb.splitlines()},
+        headers=headers
+    )
+
 
 @app.middleware("http")
 async def cors_middleware(request: Request, call_next):
