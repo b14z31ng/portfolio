@@ -60,6 +60,14 @@ def run_migrations_online() -> None:
     )
 
     with connectable.connect() as connection:
+        # Self-healing logic for desynced database state (e.g. alembic_version exists but tables are missing)
+        import sqlalchemy as sa
+        inspector = sa.inspect(connection)
+        tables = inspector.get_table_names()
+        if "alembic_version" in tables and "profiles" not in tables:
+            connection.execute(sa.text("DROP TABLE IF EXISTS alembic_version CASCADE"))
+            connection.commit()
+
         context.configure(
             connection=connection,
             target_metadata=target_metadata,
