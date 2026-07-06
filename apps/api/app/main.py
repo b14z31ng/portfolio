@@ -139,7 +139,7 @@ async def root():
     """API root endpoint."""
     return {
         "name": settings.APP_NAME,
-        "version": "1.0.1-debug",
+        "version": "1.0.2-debug",
         "docs": "/api/docs",
     }
 
