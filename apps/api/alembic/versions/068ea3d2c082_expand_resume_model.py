@@ -25,6 +25,7 @@ def upgrade() -> None:
 
     # List of columns to add with their types
     cols_to_add = [
+        ('title', sa.Column('title', sa.String(length=255), nullable=False, server_default='My Resume')),
         ('description', sa.Column('description', sa.Text(), nullable=True)),
         ('version', sa.Column('version', sa.String(length=50), nullable=True)),
         ('file_url', sa.Column('file_url', sa.String(length=512), nullable=False)),
