@@ -11,7 +11,7 @@ from fastapi.staticfiles import StaticFiles
 from app.api.v1.router import router as api_v1_router
 from app.core.config import get_settings
 from app.db.init_db import init_db
-from app.db.session import Base, async_session_factory, engine
+from app.db.session import Base, async_session_factory, engine, verify_and_sync_schema
 
 settings = get_settings()
 
@@ -27,6 +27,11 @@ async def lifespan(app: FastAPI):
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
     print("[DB] Database tables created")
+
+    # Run self-healing schema sync
+    print("[DB] Running schema verification...")
+    await verify_and_sync_schema()
+    print("[DB] Schema verification complete")
 
     async with async_session_factory() as session:
         await init_db(session)
@@ -139,7 +144,7 @@ async def root():
     """API root endpoint."""
     return {
         "name": settings.APP_NAME,
-        "version": "1.0.2-debug",
+        "version": "1.0.3-debug",
         "docs": "/api/docs",
     }
 
