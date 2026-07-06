@@ -45,7 +45,7 @@ async def list_public_publications(
     query = select(Publication).where(Publication.is_published == True)
     if featured_only:
         query = query.where(Publication.is_featured == True)
-    query = query.order_by(Publication.sort_order.asc(), Publication.year.desc().nullslast())
+    query = query.order_by(Publication.sort_order.asc(), Publication.year.desc().nulls_last())
 
     # Count
     count_query = select(func.count()).select_from(query.subquery())
