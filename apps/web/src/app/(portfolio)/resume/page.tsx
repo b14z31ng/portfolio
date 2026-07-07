@@ -89,10 +89,10 @@ export default function ResumePage() {
                         <Link href={`/resume/${resume.id}`}>
                           <Button variant="outline" className="glass-card gap-2"><Eye className="w-4 h-4" />Preview</Button>
                         </Link>
-                        <a href={resume.file_url} download>
+                        <a href={`/api/v1/resumes/${resume.id}/pdf?download=true`} download>
                           <Button className="glow-sm gap-2"><Download className="w-4 h-4" />Download</Button>
                         </a>
-                        <Button variant="outline" className="glass-card gap-2" onClick={() => handlePrint(resume.file_url)}>
+                        <Button variant="outline" className="glass-card gap-2" onClick={() => handlePrint(`/api/v1/resumes/${resume.id}/pdf`)}>
                           <Printer className="w-4 h-4" />Print
                         </Button>
                       </div>
