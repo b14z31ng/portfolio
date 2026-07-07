@@ -10,7 +10,7 @@ from datetime import datetime, timezone
 
 import cloudinary
 import cloudinary.uploader
-from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, status
+from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Response, status
 from fastapi.responses import FileResponse, RedirectResponse
 from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -185,9 +185,6 @@ async def get_resume(
     return ResumeResponse.model_validate(item)
 
 
-from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, status, Response
-from fastapi.responses import FileResponse, RedirectResponse
-# ... (rest of imports/configs) ...
 @router.get("/{resume_id}/pdf")
 async def get_resume_pdf(
     resume_id: str,
