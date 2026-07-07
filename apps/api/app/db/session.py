@@ -73,15 +73,15 @@ async def verify_and_sync_schema() -> None:
         from app.models.project import Project
         from app.models.experience import Experience
         from app.models.education import Education
-        from app.models.certificate import Certification
+        from app.models.certificate import Certificate
         from app.models.publication import Publication
-        from app.models.research import ResearchPublication
-        from app.models.blog import BlogPost, BlogCategory, BlogComment
+        from app.models.research import Research
+        from app.models.blog import BlogPost
         
         models = [
             User, Profile, Resume, Project, Experience,
-            Education, Certification, Publication, ResearchPublication,
-            BlogPost, BlogCategory, BlogComment
+            Education, Certificate, Publication, Research,
+            BlogPost
         ]
         
         for model in models:
