@@ -43,7 +43,7 @@ export default function ResumeViewPage() {
 
   const handlePrint = () => {
     if (!resume) return;
-    const w = window.open(resume.file_url, "_blank");
+    const w = window.open(`/api/v1/resumes/${resume.id}/pdf`, "_blank");
     if (w) w.addEventListener("load", () => w.print());
   };
 
@@ -88,7 +88,7 @@ export default function ResumeViewPage() {
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <a href={resume.file_url} download><Button className="glow-sm gap-2"><Download className="w-4 h-4" />Download</Button></a>
+              <a href={`/api/v1/resumes/${resume.id}/pdf?download=true`} download><Button className="glow-sm gap-2"><Download className="w-4 h-4" />Download</Button></a>
               <Button variant="outline" className="glass-card gap-2" onClick={handlePrint}><Printer className="w-4 h-4" />Print</Button>
             </div>
           </div>

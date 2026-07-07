@@ -162,6 +162,7 @@ async def upload_resume(
         file_name=original_name,
         file_size=file_size,
         mime_type="application/pdf",
+        file_data=contents if not cloudinary_configured else None,
         created_by=current_user.email,
         updated_by=current_user.email,
     )
@@ -184,27 +185,44 @@ async def get_resume(
     return ResumeResponse.model_validate(item)
 
 
+from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, status, Response
+from fastapi.responses import FileResponse, RedirectResponse
+# ... (rest of imports/configs) ...
 @router.get("/{resume_id}/pdf")
 async def get_resume_pdf(
     resume_id: str,
+    download: bool = False,
     db: AsyncSession = Depends(get_db),
 ):
-    """Get the raw PDF file of a resume for inline viewing (prevents IDM hijack)."""
+    """Get the raw PDF file of a resume for inline viewing or download, with DB fallback."""
     result = await db.execute(select(Resume).where(Resume.id == resume_id))
     item = result.scalar_one_or_none()
     if not item:
         raise HTTPException(status_code=404, detail="Resume not found")
 
+    disposition = "attachment" if download else "inline"
+
     if item.file_url.startswith("/uploads/"):
         filename = item.file_url.split("/")[-1]
         file_path = os.path.join(UPLOAD_DIR, filename)
-        if not os.path.exists(file_path):
-            raise HTTPException(status_code=404, detail="PDF file not found on disk")
-        return FileResponse(
-            file_path,
-            media_type="application/pdf",
-            content_disposition_type="inline",
-        )
+        if os.path.exists(file_path):
+            return FileResponse(
+                file_path,
+                media_type="application/pdf",
+                content_disposition_type=disposition,
+                filename=item.file_name,
+            )
+        elif item.file_data is not None:
+            # Serve from DB fallback
+            return Response(
+                content=item.file_data,
+                media_type="application/pdf",
+                headers={
+                    "Content-Disposition": f'{disposition}; filename="{item.file_name}"'
+                }
+            )
+        else:
+            raise HTTPException(status_code=404, detail="PDF file not found on disk or database")
     else:
         return RedirectResponse(item.file_url)
 

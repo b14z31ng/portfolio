@@ -169,9 +169,9 @@ export default function ResumesAdminPage() {
                     <div className="flex items-center gap-1.5 shrink-0 flex-wrap">
                       {resume.is_active ? (<Button variant="ghost" size="icon-sm" onClick={() => handleDeactivate(resume.id)} title="Deactivate" className="text-emerald-400 hover:bg-emerald-500/10"><Power className="w-4 h-4" /></Button>) : (<Button variant="ghost" size="icon-sm" onClick={() => handleActivate(resume.id)} title="Activate" className="text-muted-foreground hover:text-emerald-400 hover:bg-emerald-500/10"><PowerOff className="w-4 h-4" /></Button>)}
                       <Button variant="ghost" size="icon-sm" onClick={() => handleToggleFeature(resume.id, resume.is_featured)} title={resume.is_featured ? "Unfeature" : "Feature"} className={resume.is_featured ? "text-amber-400 hover:bg-amber-500/10" : "text-muted-foreground hover:text-amber-400 hover:bg-amber-500/10"}>{resume.is_featured ? <Star className="w-4 h-4" /> : <StarOff className="w-4 h-4" />}</Button>
-                      <a href={resume.file_url} target="_blank" rel="noopener noreferrer"><Button variant="ghost" size="icon-sm" title="Preview"><Eye className="w-4 h-4" /></Button></a>
-                      <a href={resume.file_url} download><Button variant="ghost" size="icon-sm" title="Download"><Download className="w-4 h-4" /></Button></a>
-                      <Button variant="ghost" size="icon-sm" onClick={() => handlePrint(resume.file_url)} title="Print"><Printer className="w-4 h-4" /></Button>
+                      <a href={`/api/v1/resumes/${resume.id}/pdf`} target="_blank" rel="noopener noreferrer"><Button variant="ghost" size="icon-sm" title="Preview"><Eye className="w-4 h-4" /></Button></a>
+                      <a href={`/api/v1/resumes/${resume.id}/pdf?download=true`} download><Button variant="ghost" size="icon-sm" title="Download"><Download className="w-4 h-4" /></Button></a>
+                      <Button variant="ghost" size="icon-sm" onClick={() => handlePrint(`/api/v1/resumes/${resume.id}/pdf`)} title="Print"><Printer className="w-4 h-4" /></Button>
                       <Button variant="ghost" size="icon-sm" onClick={() => handleEditClick(resume)} title="Edit"><Edit className="w-4 h-4" /></Button>
                       <Button variant="ghost" size="icon-sm" className="text-destructive hover:bg-destructive/10" onClick={() => handleDelete(resume.id)} title="Delete"><Trash2 className="w-4 h-4" /></Button>
                     </div>

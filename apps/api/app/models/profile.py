@@ -6,7 +6,7 @@ All public-facing personal data should come from this table.
 import uuid
 from datetime import datetime, timezone
 
-from sqlalchemy import Boolean, DateTime, Integer, String, Text
+from sqlalchemy import Boolean, DateTime, Integer, String, Text, LargeBinary
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.session import Base
@@ -152,6 +152,7 @@ class Resume(Base):
 
     created_by: Mapped[str | None] = mapped_column(String(255), nullable=True)
     updated_by: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    file_data: Mapped[bytes | None] = mapped_column(LargeBinary, nullable=True)
 
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),

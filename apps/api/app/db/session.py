@@ -107,6 +107,8 @@ async def verify_and_sync_schema() -> None:
                         sql_type = "BOOLEAN"
                     elif "TIMESTAMP" in type_str:
                         sql_type = "TIMESTAMP WITH TIME ZONE"
+                    elif "BYTEA" in type_str or "BLOB" in type_str or "BINARY" in type_str:
+                        sql_type = "BYTEA"
                     else:
                         sql_type = type_str
                         
