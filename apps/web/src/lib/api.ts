@@ -153,3 +153,19 @@ export class ApiError extends Error {
 }
 
 export const api = new ApiClient(API_BASE_URL);
+
+/**
+ * Returns the correct API base URL for direct browser navigation
+ * (download links, iframes, print windows).
+ * Must be called client-side only.
+ */
+export function getApiBaseUrl(): string {
+  if (typeof window !== "undefined") {
+    const host = window.location.hostname;
+    if (host.includes(".onrender.com")) {
+      const apiHost = host.replace("-web", "-api");
+      return `${window.location.protocol}//${apiHost}`;
+    }
+  }
+  return "";  // empty = same origin (works with Next.js rewrites locally)
+}

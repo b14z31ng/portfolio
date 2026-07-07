@@ -8,7 +8,7 @@ import { ArrowLeft, Download, Printer, FileText, Clock, HardDrive } from "lucide
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-import { api } from "@/lib/api";
+import { api, getApiBaseUrl } from "@/lib/api";
 
 interface Resume {
   id: string; title: string; description: string | null; version: string | null;
@@ -41,9 +41,11 @@ export default function ResumeViewPage() {
     if (params.id) fetchResume();
   }, [params.id]);
 
+  const apiBase = getApiBaseUrl();
+
   const handlePrint = () => {
     if (!resume) return;
-    const w = window.open(`/api/v1/resumes/${resume.id}/pdf`, "_blank");
+    const w = window.open(`${apiBase}/api/v1/resumes/${resume.id}/pdf`, "_blank");
     if (w) w.addEventListener("load", () => w.print());
   };
 
@@ -88,7 +90,7 @@ export default function ResumeViewPage() {
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <a href={`/api/v1/resumes/${resume.id}/pdf?download=true`} download><Button className="glow-sm gap-2"><Download className="w-4 h-4" />Download</Button></a>
+              <a href={`${apiBase}/api/v1/resumes/${resume.id}/pdf?download=true`} download><Button className="glow-sm gap-2"><Download className="w-4 h-4" />Download</Button></a>
               <Button variant="outline" className="glass-card gap-2" onClick={handlePrint}><Printer className="w-4 h-4" />Print</Button>
             </div>
           </div>
@@ -97,7 +99,7 @@ export default function ResumeViewPage() {
 
           {/* Embedded PDF Viewer */}
           <div className="glass-card rounded-2xl overflow-hidden border border-border/50" style={{ height: "80vh" }}>
-            <iframe src={`/api/v1/resumes/${resume.id}/pdf`} className="w-full h-full" title={resume.title} />
+            <iframe src={`${apiBase}/api/v1/resumes/${resume.id}/pdf`} className="w-full h-full" title={resume.title} />
           </div>
         </motion.div>
       </div>

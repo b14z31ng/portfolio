@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { api } from "@/lib/api";
+import { api, getApiBaseUrl } from "@/lib/api";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
 interface Resume {
@@ -44,6 +44,8 @@ export default function ResumePage() {
     const w = window.open(url, "_blank");
     if (w) w.addEventListener("load", () => w.print());
   };
+
+  const apiBase = getApiBaseUrl();
 
   return (
     <main className="relative flex-1 pt-28 pb-20">
@@ -89,10 +91,10 @@ export default function ResumePage() {
                         <Link href={`/resume/${resume.id}`}>
                           <Button variant="outline" className="glass-card gap-2"><Eye className="w-4 h-4" />Preview</Button>
                         </Link>
-                        <a href={`/api/v1/resumes/${resume.id}/pdf?download=true`} download>
+                        <a href={`${apiBase}/api/v1/resumes/${resume.id}/pdf?download=true`} download>
                           <Button className="glow-sm gap-2"><Download className="w-4 h-4" />Download</Button>
                         </a>
-                        <Button variant="outline" className="glass-card gap-2" onClick={() => handlePrint(`/api/v1/resumes/${resume.id}/pdf`)}>
+                        <Button variant="outline" className="glass-card gap-2" onClick={() => handlePrint(`${apiBase}/api/v1/resumes/${resume.id}/pdf`)}>
                           <Printer className="w-4 h-4" />Print
                         </Button>
                       </div>
