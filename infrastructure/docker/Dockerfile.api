@@ -25,6 +25,7 @@ HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
 
 # Run migrations and start application
 CMD ["sh", "-c", "\
+  echo \"DATABASE_URL host: $(echo $DATABASE_URL | sed 's|://[^:]*:[^@]*@|://***:***@|')\" && \
   echo 'Waiting 10s for database to be ready...' && sleep 10 && \
   for i in 1 2 3; do \
     echo \"Migration attempt $i...\"; \
