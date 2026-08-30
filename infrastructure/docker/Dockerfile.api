@@ -25,10 +25,12 @@ HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
 
 # Run migrations and start application
 CMD ["sh", "-c", "\
+  echo 'Waiting 10s for database to be ready...' && sleep 10 && \
   for i in 1 2 3; do \
     echo \"Migration attempt $i...\"; \
     alembic upgrade head && break; \
-    echo \"Migration attempt $i failed, retrying in 5s...\"; \
-    sleep 5; \
-  done; \
+    if [ $i -eq 3 ]; then echo 'All migration attempts failed. Exiting.' && exit 1; fi; \
+    echo \"Migration attempt $i failed, retrying in 10s...\"; \
+    sleep 10; \
+  done && \
   uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
