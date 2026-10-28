@@ -12,7 +12,9 @@ services:
     healthCheckPath: /api/v1/health
     envVars:
       - key: DATABASE_URL
-        sync: false
+        fromDatabase:
+          name: portfolio-db
+          property: internalConnectionString
       - key: REDIS_URL
         fromService:
           type: keyvalue
